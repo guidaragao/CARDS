@@ -16,11 +16,11 @@ body{font-family:'Outfit',system-ui,sans-serif;background:#0e141a;color:#e8edf2}
   <button id="bt-luiz" onclick="show('luiz')">Cards (Luiz)</button>
   <h1>PCM P2 - Turma Salvador</h1>
 </div>
-<div id="host"><iframe id="frame" src="_normal.html"></iframe></div>
+<div id="host"><iframe id="frame" src="normal.html"></iframe></div>
 <script>
 function show(k){
   document.querySelectorAll('.tabbar button').forEach(b=>b.classList.remove('active'));
   document.getElementById('bt-'+k).classList.add('active');
-  document.getElementById('frame').src = '_'+k+'.html';
+  document.getElementById('frame').src = k+'.html';
 }
 </script></body></html>

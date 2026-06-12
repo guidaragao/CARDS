@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sentinela · Cartoes PCM P2</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#002B5C;--navy2:#001A38;--navy3:#00132B;--lima:#CBD12E;--creme:#F4EDE0;--grafite:#2C3A47;--ferrugem:#C1441E;--offwhite:#FAF7F0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0c1622;font-family:'Outfit',sans-serif;color:#fff;padding:40px 16px;display:flex;flex-direction:column;align-items:center;gap:46px}
+.intro{max-width:1080px;width:100%;color:#cdd6e0}
+.intro h1{font-size:22px;font-weight:700;margin-bottom:6px}.intro h1 b{color:var(--lima)}
+.intro p{font-size:14px;font-weight:300;line-height:1.6;color:#9fb0c2}
+.intro .pill{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--lima);border:1px solid rgba(203,209,46,.4);border-radius:30px;padding:5px 14px;font-weight:600}
+.slide-wrap{width:100%;max-width:1080px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.slide-label{align-self:flex-start;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7f93a8;font-weight:600}.slide-label b{color:var(--lima)}
+.slide-scaler{width:100%;overflow:hidden;border-radius:10px}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy3)}
+.tex{position:absolute;inset:0;z-index:1;background-image:radial-gradient(rgba(203,209,46,.10) 1.6px,transparent 1.7px),repeating-linear-gradient(0deg,transparent 0 79px,rgba(255,255,255,.022) 79px 80px),radial-gradient(ellipse at 50% 26%,#063566 0%,var(--navy) 52%,var(--navy3) 100%);background-size:40px 40px,100% 100%,100% 100%}
+.slide.light .tex{background-image:radial-gradient(rgba(0,43,92,.10) 1.6px,transparent 1.7px),repeating-linear-gradient(0deg,transparent 0 79px,rgba(0,43,92,.03) 79px 80px),radial-gradient(ellipse at 50% 30%,#fff 0%,var(--offwhite) 60%,#efe7d8 100%);background-size:40px 40px,100% 100%,100% 100%}
+.corner{position:absolute;width:62px;height:62px;z-index:26;border-color:var(--lima)}
+.corner.tl{top:42px;left:42px;border-top:2.5px solid;border-left:2.5px solid}
+.corner.tr{top:42px;right:42px;border-top:2.5px solid;border-right:2.5px solid}
+.corner.bl{bottom:42px;left:42px;border-bottom:2.5px solid;border-left:2.5px solid}
+.corner.br{bottom:42px;right:42px;border-bottom:2.5px solid;border-right:2.5px solid}
+.slide.light .corner{border-color:var(--navy)}
+.photo{position:absolute;z-index:2}.photo img{display:block}
+.scrim{position:absolute;inset:0;z-index:5;pointer-events:none}
+.scrim.leftcol{background:linear-gradient(90deg,var(--navy3) 0%,rgba(0,19,43,.78) 32%,rgba(0,19,43,.28) 50%,rgba(0,19,43,0) 66%)}
+.wmS{position:absolute;z-index:3;font-weight:900;color:rgba(255,255,255,.04);font-size:880px;line-height:1;right:-70px;bottom:-180px;user-select:none}
+.slide.light .wmS{color:rgba(0,43,92,.05)}
+.badge{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--lima);border-radius:40px;padding:12px 26px;font-size:21px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--lima)}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:var(--lima)}
+.pcm{font-weight:900;letter-spacing:-2px;line-height:.9;color:#fff}
+.slide.light .pcm{color:var(--navy)}
+.pcm .p2{color:var(--lima)}
+.turma{font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--lima);font-size:40px}
+.dateblock{display:flex;align-items:center;gap:24px}
+.dateblock .cal{width:74px;height:74px;border:2.5px solid var(--lima);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.dateblock .cal .top{background:var(--lima);width:100%;height:18px;border-radius:9px 9px 0 0;margin-top:-2px}
+.dateblock .cal .d{font-size:30px;font-weight:800;color:var(--lima);line-height:1;margin-top:6px}
+.dateblock .dt{font-size:52px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-1px}
+.slide.light .dateblock .dt{color:var(--navy)}
+.dateblock .dt small{display:block;font-size:26px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:6px}
+.slide.light .dateblock .dt small{color:rgba(0,43,92,.6)}
+.feats{display:flex;gap:0;align-items:stretch}
+.feat{flex:1;text-align:center;padding:0 14px}
+.feat:not(:last-child){border-right:none}
+.feat .ic{font-size:48px;margin-bottom:14px}
+.feat .ft{font-size:30px;font-weight:700;color:#fff;letter-spacing:.5px;line-height:1.22}
+.feat .ft b{color:var(--lima);font-weight:700}
+.slide.light .feat .ft{color:var(--navy)}
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--lima);color:var(--navy);font-weight:800;font-size:30px;letter-spacing:1px;text-transform:uppercase;padding:24px 44px;border-radius:14px}
+.cta.ghost{background:transparent;border:2px solid var(--lima);color:var(--lima)}
+.footc{display:flex;align-items:center;gap:13px}
+.footc img{height:60px}.footc .a{font-size:20px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#fff;line-height:1}.footc .b{font-size:13px;font-weight:500;letter-spacing:6px;text-transform:uppercase;color:var(--lima);margin-top:3px;line-height:1}
+.slide.light .footc .a{color:var(--navy)}
+.loc{font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.slide.light .loc{color:rgba(0,43,92,.6)}
+.btn{background:var(--lima);color:var(--navy);border:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;padding:12px 26px;border-radius:8px;cursor:pointer;text-transform:uppercase}
+.tip{font-size:12px;color:#7f93a8;font-weight:300;max-width:1080px;width:100%;line-height:1.6}
+</style></head><body>
+<div class="intro"><h1>Cartoes de venda <b>·</b> PCM P2</h1><p>Turma 24 a 26 julho, Salvador BA. Tres versoes com tratamento Sentinela. A informativa, B com foto do Luiz, C elegante minimalista. Export 1080x1350.</p><span class="pill">PCM P2 · Turma aberta</span><br><button class="btn" style="margin-top:16px" onclick="dlAll()">Baixar os 3 cartoes</button></div><div class="slide-wrap"><div class="slide-label">Cartao A · Informativa e direta</div><div class="slide-scaler"><div class="slide" id="cA"><div class="tex"></div><div class="wmS">S</div><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div style="position:absolute;z-index:20;left:78px;right:78px;top:96px;display:flex;flex-direction:column;gap:0;height:calc(100% - 192px)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <span class="badge"><span class="dot"></span>Inscricoes abertas</span>
+  </div>
+  <div style="margin-top:70px">
+    <div class="pcm" style="font-size:150px">PCM <span class="p2">P2</span></div>
+    <div class="turma" style="margin-top:14px">Turma aberta</div>
+  </div>
+  <div style="margin-top:64px;border:1.5px solid rgba(203,209,46,.4);border-radius:20px;padding:36px 40px;display:flex;align-items:center;gap:28px;background:rgba(0,19,43,.3)">
+    <div class="cal"><div class="top"></div><div class="d">24</div></div>
+    <div class="dt" style="font-size:50px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1">24 a 26 de julho<small style="display:block;font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:8px">Salvador · BA</small></div>
+  </div>
+  <div style="margin-top:auto">
+    <div class="feats"><div class="feat"><div class="ic">&#128336;</div><div class="ft"><b>22h</b> presenciais</div></div><div class="feat"><div class="ic">&#127894;</div><div class="ft">Certificacao<br>internacional</div></div><div class="feat"><div class="ic">&#128101;</div><div class="ft">Vagas<br>limitadas</div></div></div>
+    <div style="margin-top:54px;display:flex;align-items:center;justify-content:space-between">
+      <div class="cta"><span>&#128241;</span> Solicite informacoes</div>
+      <div class="footc"><img src="images/img_001_2765cfef19.png"><div><div class="a">Metodo</div><div class="b">Sentinela</div></div></div>
+    </div>
+  </div>
+</div></div></div><button class="btn" onclick="dl('cA','sentinela-pcm-p2-A')">Baixar PNG</button></div><div class="slide-wrap"><div class="slide-label">Cartao B · Com foto do instrutor</div><div class="slide-scaler"><div class="slide" id="cB"><div class="tex"></div>
+<div class="photo" style="right:-20px;top:0;bottom:0;display:flex;align-items:flex-end"><img src="images/img_003_b8dee5346b.png" style="height:100%;width:auto"></div>
+<div class="scrim leftcol"></div><div class="wmS">S</div><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div style="position:absolute;z-index:20;left:78px;right:78px;top:96px;display:flex;flex-direction:column;height:calc(100% - 192px)">
+  <span class="badge" style="align-self:flex-start"><span class="dot"></span>Inscricoes abertas</span>
+  <div style="margin-top:54px">
+    <div style="font-size:60px;font-weight:300;color:#fff;line-height:1.1">Proxima turma<br><b style="font-weight:800;color:var(--lima)">confirmada.</b></div>
+  </div>
+  <div style="margin-top:48px;display:flex;align-items:center;gap:22px">
+    <div class="cal"><div class="top"></div><div class="d">24</div></div>
+    <div class="dt" style="font-size:44px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1">24 a 26 julho<small style="display:block;font-size:22px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:7px">Salvador · BA</small></div>
+  </div>
+  <div style="margin-top:auto">
+    <div class="pcm" style="font-size:120px">PCM <span class="p2">P2</span></div>
+    <div style="font-size:21px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:8px">Professional Crisis Management</div>
+    <div style="margin-top:44px;display:flex;align-items:center;justify-content:space-between">
+      <div class="cta"><span>&#128241;</span> Garanta sua vaga</div>
+      <div class="footc"><img src="images/img_001_2765cfef19.png"><div><div class="a">Metodo</div><div class="b">Sentinela</div></div></div>
+    </div>
+  </div>
+</div></div></div><button class="btn" onclick="dl('cB','sentinela-pcm-p2-B')">Baixar PNG</button></div><div class="slide-wrap"><div class="slide-label">Cartao C · Elegante minimalista</div><div class="slide-scaler"><div class="slide light" id="cC"><div class="tex"></div><div class="wmS">S</div><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div style="position:absolute;z-index:20;left:78px;right:78px;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0">
+  <span class="badge" style="border-color:var(--navy);color:var(--navy)"><span class="dot"></span>Inscricoes abertas</span>
+  <div class="pcm" style="font-size:140px;margin-top:50px">PCM <span style="color:#8f942a">P2</span></div>
+  <div style="width:90px;height:4px;background:var(--lima);border-radius:3px;margin:36px 0"></div>
+  <div style="font-size:118px;font-weight:800;color:#8f942a;line-height:.92;letter-spacing:-1px">24 <span style="font-weight:300;font-size:80px">a</span> 26</div>
+  <div style="font-size:54px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--navy);margin-top:8px">Julho</div>
+  <div class="loc" style="margin-top:18px">Salvador · BA</div>
+  <div style="margin-top:20px;font-size:26px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--navy);padding:6px 40px">Turma aberta</div>
+  <div style="position:absolute;bottom:70px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <div style="display:flex;gap:36px;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--navy)">
+      <span>22h presenciais</span><span style="color:var(--lima)">·</span><span>Certificacao internacional</span><span style="color:var(--lima)">·</span><span>Vagas limitadas</span>
+    </div>
+    <div class="cta" style="background:var(--navy);color:var(--creme);font-size:30px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:22px 48px;border-radius:14px;display:inline-flex;align-items:center;gap:14px">&#128241; Garanta sua vaga</div><div class="footc" style="background:var(--navy);padding:14px 28px;border-radius:50px"><img src="images/img_001_2765cfef19.png" style="height:48px"><div><div class="a" style="color:#fff">Metodo</div><div class="b">Sentinela</div></div></div>
+  </div>
+</div></div></div><button class="btn" onclick="dl('cC','sentinela-pcm-p2-C')">Baixar PNG</button></div><div class="tip">3 cartoes PCM P2. Tratamento Sentinela: cantos, dot grid, paleta navy/lima/creme. Foto do Luiz (cut 3) no cartao B. Export fix html2canvas 2x.</div><script>
+async function dl(id,name){const el=document.getElementById(id);const fit=el.closest('.slide-fit');const sf=fit?fit.style.transform:'';if(fit)fit.style.transform='none';const pt=el.style.transform,po=el.style.transformOrigin;el.style.transform='none';el.style.transformOrigin='top left';await document.fonts.ready;await new Promise(r=>setTimeout(r,150));try{const cv=await html2canvas(el,{width:1080,height:1350,windowWidth:1080,windowHeight:1350,scale:2,useCORS:true,backgroundColor:null,logging:false});el.style.transform=pt;el.style.transformOrigin=po;if(fit)fit.style.transform=sf;cv.toBlob(b=>{const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name+'.png';a.click();URL.revokeObjectURL(u);},'image/png');}catch(e){el.style.transform=pt;if(fit)fit.style.transform=sf;alert('Erro: '+e.message);}}
+async function dlAll(){for(const x of [['cA','cardA-informativa'],['cB','cardB-instrutor'],['cC','cardC-minimalista']]){await dl(x[0],'sentinela-pcm-p2-'+x[1]);await new Promise(r=>setTimeout(r,650));}}
+function fitSlides(){document.querySelectorAll('.slide-scaler').forEach(sc=>{const w=sc.clientWidth;const scale=Math.min(1,w/1080);let fit=sc.querySelector('.slide-fit');if(!fit){const inner=sc.innerHTML;fit=document.createElement('div');fit.className='slide-fit';fit.innerHTML=inner;sc.innerHTML='';sc.appendChild(fit);}fit.style.transformOrigin='top left';fit.style.transform='scale('+scale+')';sc.style.height=(1350*scale)+'px';});}
+window.addEventListener('resize',fitSlides);window.addEventListener('load',fitSlides);
+</script></body></html>
